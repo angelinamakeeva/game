@@ -1,49 +1,49 @@
 import random
 
+import rulocal
 
-def RandomEvent():
-    with open("name.txt", "r", encoding='utf-8') as f:
-        lines = f.readlines()
-        random_line = random.choice(lines)
-    return random_line
-
-
-random_line = RandomEvent()
-
-hungry = 10
+day_count = 1
+food = 10
 health = 10
 mind = 10
-day = 1
 
+while True:
+    with open("name.txt", "r", encoding='utf-8') as f:
+        lines = f.readlines()
+        randomnum = random.randint(0,len(lines)-1)
+        event = lines[randomnum].split("/")[0]
+        choise1 = lines[randomnum].split("/")[1]
+        choise2 = lines[randomnum].split("/")[2]
+        food_change1 = lines[randomnum].split("/")[3]
+        health_change1 = lines[randomnum].split("/")[4]
+        mind_change1 = lines[randomnum].split("/")[5]
+        food_change2 = lines[randomnum].split("/")[6]
+        health_change2 = lines[randomnum].split("/")[7]
+        mind_change2 = lines[randomnum].split("/")[8]
+    print(rulocal.day_stat,day_count)
+    print(rulocal.user_stat)
+    print(food)
+    print(health)
+    print(mind)
+    print(event)
+    print(rulocal.make_desision)
+    print("1 ", choise1)
+    print("2 ", choise2)
+    user_choise = int(input())
 
-def Result(hungry, health, mind):
-    output1 = "Итог: "
-    output2 = ""
-    if int(hungry) != 0:
-        output2 += hungry + " голод "
-    if int(health) != 0:
-        output2 += health + " здоровье "
-    if int(mind) != 0:
-        output2 += mind + " рассудок "
-    if output2 == "":
-        output2 = "Ничего изменилось"
-    return output1 + output2
+    if user_choise == 1:
+        food = food + int(food_change1)
+        health = health + int(health_change1)
+        mind = mind + int(mind_change1)
+    if user_choise == 2:
+        food = food + int(food_change2)
+        health = health + int(health_change2)
+        mind = mind + int(mind_change2)
 
-
-while day <= 15:
-    print("День", day)
-
-    print("Голод", hungry)
-    print("Здоровье", health)
-    print("Рассудок", mind, "\n")
-
-    if (day == 15):
-        print("\nВы смогли выжить в бункере! Поздравляем!")
+    day_count += 1
+    if food <= 0 or health <= 0 or mind <= 0:
+        print(rulocal.lose)
         break
-
-    situation, act1, consequence1, change_hungry1, change_health1, change_mind1, act2, consequence2, change_hungry2, change_health2, change_mind2 = random_line.split(
-        '*')
-
-    print(situation)
-    print("1. " + act1)
-    print("2. " + act2)
+    if day_count == 15 :
+        print(rulocal.congrats)
+        break
