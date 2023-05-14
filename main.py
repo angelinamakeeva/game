@@ -10,7 +10,8 @@ mind = 10
 while True:
     with open("name.txt", "r", encoding='utf-8') as f:
         lines = f.readlines()
-        randomnum = random.randint(0,len(lines)-1)
+        L = random.sample(range(0, len(lines)), k=1)
+        randomnum = int(''.join(str(i) for i in L))
         event = lines[randomnum].split("/")[0]
         choise1 = lines[randomnum].split("/")[1]
         choise2 = lines[randomnum].split("/")[2]
@@ -22,9 +23,10 @@ while True:
         mind_change2 = lines[randomnum].split("/")[8]
     print(rulocal.day_stat,day_count)
     print(rulocal.user_stat)
-    print(food)
-    print(health)
-    print(mind)
+    print(rulocal.food, food)
+    print(rulocal.health, health)
+    print(rulocal.mind, mind)
+    print()
     print(event)
     print(rulocal.make_desision)
     print("1 ", choise1)
@@ -44,6 +46,6 @@ while True:
     if food <= 0 or health <= 0 or mind <= 0:
         print(rulocal.lose)
         break
-    if day_count == 15 :
+    if day_count == 16 :
         print(rulocal.congrats)
         break
