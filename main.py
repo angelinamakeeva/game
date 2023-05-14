@@ -7,6 +7,8 @@ food = 10
 health = 10
 mind = 10
 
+print(rulocal.start)
+
 while True:
     with open("name.txt", "r", encoding='utf-8') as f:
         lines = f.readlines()
@@ -43,8 +45,12 @@ while True:
         mind = mind + int(mind_change2)
 
     day_count += 1
-    if food <= 0 or health <= 0 or mind <= 0:
-        print(rulocal.lose)
+    if food <= 0:
+        print(rulocal.losefood)
+    if health <= 0:
+        print(rulocal.losehealth)
+    if mind <= 0:
+        print(rulocal.losemind)
         break
     if day_count == 16 :
         print(rulocal.congrats)
