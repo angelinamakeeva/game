@@ -1,3 +1,6 @@
+
+#description of the game https://clck.ru/34SPTx
+
 import random
 
 import rulocal
