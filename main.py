@@ -23,11 +23,14 @@ while True:
         food_change2 = lines[randomnum].split("/")[6]
         health_change2 = lines[randomnum].split("/")[7]
         mind_change2 = lines[randomnum].split("/")[8]
+        consequence1 = lines[randomnum].split("/")[9]
+        consequence2 = lines[randomnum].split("/")[10]
     print(rulocal.day_stat,day_count)
+
     print(rulocal.user_stat)
-    print(rulocal.food, food)
-    print(rulocal.health, health)
-    print(rulocal.mind, mind)
+    print(rulocal.food,food)
+    print(rulocal.health,health)
+    print(rulocal.mind,mind)
     print()
     print(event)
     print(rulocal.make_desision)
@@ -36,6 +39,12 @@ while True:
     user_choise = int(input())
 
     if user_choise == 1:
+        print()
+        print(consequence1)
+    if user_choise == 2:
+        print()
+        print(consequence2)
+    if user_choise == 1:
         food = food + int(food_change1)
         health = health + int(health_change1)
         mind = mind + int(mind_change1)
@@ -43,6 +52,7 @@ while True:
         food = food + int(food_change2)
         health = health + int(health_change2)
         mind = mind + int(mind_change2)
+
 
     day_count += 1
     if food <= 0:
