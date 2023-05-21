@@ -1,7 +1,13 @@
+#Макеева Ангелина - 95%
+#Карева Алена
+#Осокина Анастасия
+
 import random
 import rulocal
 from tkinter import *
 import tkinter.font as fnt
+
+
 
 def game():
     day_count = 1
